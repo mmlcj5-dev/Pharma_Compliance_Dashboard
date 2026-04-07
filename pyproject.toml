@@ -31,3 +31,6 @@ Source = "https://github.com/yourusername/pharma-compliance-dashboard"
 
 [project.scripts]
 pharma-dashboard = "pharma_dashboard.app:main"
+
+[tool.uv]
+package = false
