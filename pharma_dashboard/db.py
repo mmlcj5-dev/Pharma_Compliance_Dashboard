@@ -13,8 +13,8 @@ if not SUPABASE_URL or not SUPABASE_KEY:
     raise ValueError("Missing Supabase credentials.")
 
 DATABASE_URL = (
-    f"postgresql+psycopg2://postgres:{SUPABASE_KEY}"
-    "@db.kjscibctzfiyhcokqtcl.supabase.co:5432/postgres"
+    f"postgresql+psycopg2://postgres.kjscibctzfiyhcokqtcl:{SUPABASE_KEY}"
+    "@aws-1-us-west-2.pooler.supabase.com:5432/postgres"
     "?sslmode=require"
 )
 
