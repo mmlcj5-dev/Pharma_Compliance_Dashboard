@@ -14,7 +14,7 @@ if not SUPABASE_URL or not SUPABASE_KEY:
 
 DATABASE_URL = (
     f"postgresql+psycopg2://postgres:{SUPABASE_KEY}"
-    "@db.gdkzizmehfvfokwdeapi.supabase.co:5432/postgres"
+    "@db.gdkzizmehfvfokwdeapi.supabase.net:5432/postgres"
     "?sslmode=require"
 )
 
