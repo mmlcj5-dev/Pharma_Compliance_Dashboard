@@ -18,7 +18,6 @@ dependencies = [
   "streamlit>=1.30",
   "pandas>=2.0",
   "sqlalchemy>=2.0",
-  "supabase-py>=1.0",   # FIXED — 2.0 does not exist
   "python-dotenv>=1.0",
   "matplotlib>=3.8",
   "psycopg2-binary>=2.9"
@@ -30,7 +29,7 @@ Documentation = "https://github.com/yourusername/pharma-compliance-dashboard"
 Source = "https://github.com/yourusername/pharma-compliance-dashboard"
 
 [project.scripts]
-pharma-dashboard = "pharma_dashboard.app:main"
+pharma_dashboard = "pharma_dashboard.app:main"
 
 [tool.uv]
 package = false
