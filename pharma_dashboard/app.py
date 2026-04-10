@@ -12,6 +12,11 @@ from pharma_dashboard.schema import (
 )
 
 # ------------------------------------------------------------
+# DATABASE SESSION
+# ------------------------------------------------------------
+session = get_session()
+
+# ------------------------------------------------------------
 # PAGE SETUP
 # ------------------------------------------------------------
 st.set_page_config(
@@ -39,12 +44,60 @@ page = st.sidebar.radio(
 st.title("📊 Pharma Compliance Dashboard")
 # st.write("Connected to Supabase and ready to display data.")
 
+if page == "Dashboard":
+    st.header("Dashboard")
 
-# ------------------------------------------------------------
-# DATABASE SESSION
-# ------------------------------------------------------------
-session = get_session()
+elif page == "Sites":
+    st.header("Sites")
 
+    sites = session.query(Site).all()
+
+    st.dataframe([
+        {
+            "ID": s.id,
+            "Name": s.name,
+            "Code": s.code,
+            "City": s.city,
+            "State": s.state,
+            "Country": s.country,
+        }
+        for s in sites
+    ])
+
+elif page == "Modules":
+    st.header("Training Modules")
+
+    modules = session.query(TrainingModule).all()
+
+    st.dataframe([
+        {
+            "ID": m.id,
+            "Title": m.title,
+            "Description": m.description,
+            "Active": m.active,
+        }
+        for m in modules
+    ])
+
+elif page == "Assignments":
+    st.header("Training Assignments")
+
+    assignments = session.query(TrainingAssignment).all()
+
+    st.dataframe([
+        {
+            "ID": a.id,
+            "User ID": a.user_id,
+            "Module ID": a.module_id,
+            "Site ID": a.site_id,
+            "Due Date": a.due_date,
+            "Completed": "Yes" if session.query(TrainingAttempt)
+                                      .filter_by(assignment_id=a.id, passed=True)
+                                      .first()
+                                      else "No",
+        }
+        for a in assignments
+    ])
 
 # ------------------------------------------------------------
 # SIMPLE METRICS
