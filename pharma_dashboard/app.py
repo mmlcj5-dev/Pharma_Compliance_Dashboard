@@ -257,5 +257,5 @@ if page == "Heatmap":
             ax=ax,
         )
         ax.set_title("Training Completion by Site and Module")
-        st.pyplot(fig)
+        st.pyplot(fig, use_container_width=True)
 
