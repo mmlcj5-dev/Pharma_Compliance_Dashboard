@@ -113,3 +113,44 @@ class TrainingAttempt(Base):
 
     assignment = relationship("TrainingAssignment", back_populates="attempts")
     user = relationship("User", back_populates="attempts")
+
+
+# ============================================================
+# TRAINING
+# ============================================================
+class Training(Base):
+    __tablename__ = "training"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
+    name = sqlalchemy.Column(sqlalchemy.String(255), nullable=False)
+    description = sqlalchemy.Column(sqlalchemy.Text)
+    active = sqlalchemy.Column(sqlalchemy.Boolean, default=True)
+
+
+# ============================================================
+# TRAINING RECORDS
+# ============================================================
+class TrainingRecord(Base):
+    __tablename__ = "training_records"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
+    user_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("users.id"), nullable=False)
+    training_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("training.id"))
+    completed_at = sqlalchemy.Column(sqlalchemy.DateTime)
+    expiry_date = sqlalchemy.Column(sqlalchemy.Date)
+    certificate_url = sqlalchemy.Column(sqlalchemy.String(500))
+    status = sqlalchemy.Column(sqlalchemy.String(50))
+
+
+# ============================================================
+# USER CREDENTIALS
+# ============================================================
+class UserCredential(Base):
+    __tablename__ = "user_credential"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
+    user_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("users.id"), nullable=False)
+    credential_type = sqlalchemy.Column(sqlalchemy.String(100))
+    credential_value = sqlalchemy.Column(sqlalchemy.String(255))
+    issued_date = sqlalchemy.Column(sqlalchemy.Date)
+    expiry_date = sqlalchemy.Column(sqlalchemy.Date)

@@ -40,3 +40,18 @@ After building the wheel:
 
 ```bash
 pip install pharma_compliance_dashboard-0.1.0-py3-none-any.whl
+```
+
+### 2. Configure your environment
+
+Set the following environment variables:
+
+- `SUPABASE_URL` — your Supabase project URL  
+- `SUPABASE_KEY` — your Supabase database password  
+
+Example:
+
+```bash
+SUPABASE_URL="your-project.supabase.co"
+SUPABASE_KEY="your-db-password"
+```

@@ -7,6 +7,9 @@ from pharma_dashboard.schema import (
     TrainingModule,
     TrainingAssignment,
     TrainingAttempt,
+    Training,
+    TrainingRecord,
+    UserCredential,
 )
 
 # ------------------------------------------------------------
@@ -35,6 +38,9 @@ total_sites = session.query(Site).count()
 total_modules = session.query(TrainingModule).count()
 total_assignments = session.query(TrainingAssignment).count()
 total_attempts = session.query(TrainingAttempt).count()
+total_trainings = session.query(Training).count()
+total_training_records = session.query(TrainingRecord).count()
+total_credentials = session.query(UserCredential).count()
 
 col1, col2, col3, col4, col5 = st.columns(5)
 
@@ -43,6 +49,12 @@ col2.metric("Sites", total_sites)
 col3.metric("Modules", total_modules)
 col4.metric("Assignments", total_assignments)
 col5.metric("Attempts", total_attempts)
+
+col6, col7, col8 = st.columns(3)
+
+col6.metric("Trainings", total_trainings)
+col7.metric("Records", total_training_records)
+col8.metric("Credentials", total_credentials)
 
 
 # ------------------------------------------------------------
