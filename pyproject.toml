@@ -29,7 +29,7 @@ Documentation = "https://github.com/yourusername/pharma-compliance-dashboard"
 Source = "https://github.com/yourusername/pharma-compliance-dashboard"
 
 [project.scripts]
-pharma-dashboard = "pharma_dashboard.app:main"
+pharma_dashboard = "pharma_dashboard.app:main"
 
 [tool.uv]
 package = false
